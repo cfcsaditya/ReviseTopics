@@ -1,45 +1,44 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import { LogBox, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
+LogBox.ignoreAllLogs();
+const App = () => {
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
+    <SafeAreaView style={{ flex: 1 }}>
+      <StatusBar barStyle="dark-content" />
+      <View style={styles.fourth}>
+        <View style={{ flex: 1, backgroundColor: 'orange' }} />
+        <View style={styles.sixth}>
+          <View style={styles.circle} />
+        </View>
+        <View style={styles.third}></View>
+      </View>
+    </SafeAreaView>
   );
-}
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+};
 
 export default App;
+
+const styles = StyleSheet.create({
+  fourth: { flexDirection: 'column', flex: 1, marginTop: 60 },
+  sixth: {
+    flex: 1,
+    backgroundColor: '#faf3eb',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  circle: {
+    borderWidth: 7,
+    borderRadius: 135,
+    borderColor: 'blue',
+
+    height: 265,
+    width: 265,
+
+    backgroundColor: 'white',
+  },
+  third: {
+    flex: 1,
+    backgroundColor: 'green',
+  },
+});
