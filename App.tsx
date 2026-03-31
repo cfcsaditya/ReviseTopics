@@ -1,44 +1,61 @@
-import { LogBox, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import {
+  LogBox,
+  
+  StatusBar,
+  StyleSheet,
+  View,
+} from 'react-native';
 import React from 'react';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import { vh, vw } from './src/constants/dimensions';
+import { Colors } from './src/constants/color';
+import Dashboard from './Dashboard';
 
 LogBox.ignoreAllLogs();
 const App = () => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <StatusBar barStyle="dark-content" />
-      <View style={styles.fourth}>
-        <View style={{ flex: 1, backgroundColor: 'orange' }} />
-        <View style={styles.sixth}>
-          <View style={styles.circle} />
-        </View>
-        <View style={styles.third}></View>
+    <SafeAreaView style={{flex:1}} edges={['top']}>
+      <StatusBar
+        barStyle="dark-content"
+     
+        
+      />
+      
+      <View style={{ ...styles.box, backgroundColor: Colors.orange }} />
+      <View style={[styles.box,styles.middleContainer]}>
+        <View style={styles.circle} />
       </View>
+      <View style={{...styles.box,backgroundColor:Colors.green}} />
+    
+        
     </SafeAreaView>
+     
   );
 };
+
 
 export default App;
 
 const styles = StyleSheet.create({
-  fourth: { flexDirection: 'column', flex: 1, marginTop: 60 },
-  sixth: {
+  box: {
     flex: 1,
-    backgroundColor: '#faf3eb',
+  },
+    
+  middleContainer: {
+
+    backgroundColor:Colors.white,
     justifyContent: 'center',
     alignItems: 'center',
   },
   circle: {
-    borderWidth: 7,
-    borderRadius: 135,
-    borderColor: 'blue',
+    borderWidth: vw(7),
+    borderRadius: vw(135),
+    borderColor: Colors.blue,
 
-    height: 265,
-    width: 265,
+    height: vh(200),
+    width: vw(200),
 
     backgroundColor: 'white',
   },
-  third: {
-    flex: 1,
-    backgroundColor: 'green',
-  },
+   
 });
